@@ -2,9 +2,12 @@ title 设置IP地址
 @echo off
 setlocal enabledelayedexpansion
 color 71
+rem CMD窗口显示中文乱码
+chcp 65001 > nul
 
 rem WIN10系统CMD获取管理员权限
-%1 start "" mshta vbscript:CreateObject("Shell.Application").ShellExecute("cmd.exe","/c ""%~s0"" ::","","runas",1)(window.close)&&exit
+%1 start "" mshta vbscript:CreateObject("Shell.Application").ShellExecute("cmd.exe","/c pushd ""%~dp0"" && ""%~s0"" ::","","runas",1)(window.close)&&exit
+
 
 set NAME="本地连接 2"	
 set "MASK=255.255.255.0"
